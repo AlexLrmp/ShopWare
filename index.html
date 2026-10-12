@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ShopWare: tienda online de componentes y periféricos de hardware con garantía y envío rápido en Lima.">
+  <title>ShopWare - Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/data.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/payment.js" defer></script>
+  <script src="js/catalog.js" defer></script>
+  <script src="js/reviews.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="inicio">
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+  <header class="sitio-header">
+    <div class="header-barra">
+      <a href="index.html" class="logo" aria-label="ShopWare, ir al inicio"><span class="logo-marca" aria-hidden="true"></span>ShopWare</a>
+      <nav id="menu-principal" class="menu-principal" aria-label="Navegación principal">
+        <a href="productos.html">Productos</a>
+        <a href="ofertas.html">Ofertas</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="login.html" data-auth="guest">Iniciar sesión</a>
+        <a href="registro.html" class="nav-destacado" data-auth="guest">Registrarse</a>
+        <span id="saludo" class="saludo" data-auth="user" hidden></span>
+        <button type="button" data-auth="user" data-accion="logout" hidden>Salir</button>
+      </nav>
+      <div class="header-acciones">
+        <button type="button" class="btn-icono" data-abre="panel-carrito" aria-haspopup="dialog" aria-expanded="false" aria-controls="panel-carrito" aria-label="Abrir carrito de compras">🛒 <span id="carrito-contador" class="contador" aria-live="polite">0</span></button>
+      </div>
+    </div>
+  </header>
+  <div id="overlay" class="overlay"></div>
+  <button type="button" class="fab" data-abre="panel-lista" aria-haspopup="dialog" aria-expanded="false" aria-controls="panel-lista" aria-label="Abrir menú: categorías y búsqueda rápida"><span class="fab-barras" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  <button type="button" id="btn-audio" class="fab-audio" aria-pressed="false" aria-label="Activar música ambiental">🔇</button>
+  <audio id="audio-ambiente" loop preload="none"><source src="media/audio-promo.mp3" type="audio/mpeg"></audio>
+
+  <aside id="panel-lista" class="panel izq" aria-labelledby="t-lista" aria-hidden="true">
+    <div class="panel-cabecera"><h2 id="t-lista">Explorar ShopWare</h2><button type="button" class="cerrar-panel" data-cerrar-panel aria-label="Cerrar menú">&times;</button></div>
+    <div class="busqueda-rapida">
+      <label for="busqueda-rapida" class="solo-lector">Buscar productos y categorías</label>
+      <input type="search" id="busqueda-rapida" placeholder="Buscar productos o marcas…" autocomplete="off" aria-controls="resultados-rapidos">
+    </div>
+    <p id="rapida-info" class="solo-lector" aria-live="polite"></p>
+    <ul id="resultados-rapidos" class="panel-lista-enlaces panel-scroll" hidden></ul>
+    <div id="panel-base" class="panel-scroll">
+      <nav aria-labelledby="h-per"><h3 id="h-per">Periféricos</h3><ul class="panel-lista-enlaces"><li><a href="categorias/mouse.html">Mouse <span>3</span></a></li><li><a href="categorias/teclados.html">Teclados <span>3</span></a></li><li><a href="categorias/monitores.html">Monitores <span>3</span></a></li><li><a href="categorias/audifonos.html">Audífonos <span>3</span></a></li><li><a href="categorias/parlantes.html">Parlantes <span>3</span></a></li><li><a href="categorias/webcams.html">Webcams <span>3</span></a></li><li><a href="categorias/microfonos.html">Micrófonos <span>3</span></a></li><li><a href="categorias/mousepads.html">Mousepads <span>3</span></a></li><li><a href="categorias/gamepads.html">Gamepads <span>3</span></a></li></ul></nav>
+      <nav aria-labelledby="h-com"><h3 id="h-com">Componentes para la PC</h3><ul class="panel-lista-enlaces"><li><a href="categorias/tarjetas-de-video.html">Tarjetas de video <span>3</span></a></li><li><a href="categorias/procesadores.html">Procesadores <span>3</span></a></li><li><a href="categorias/memoria-ram.html">Memoria RAM <span>3</span></a></li><li><a href="categorias/almacenamiento.html">Almacenamiento <span>3</span></a></li><li><a href="categorias/placas-madre.html">Placas madre <span>3</span></a></li><li><a href="categorias/fuentes-de-poder.html">Fuentes de poder <span>3</span></a></li><li><a href="categorias/gabinetes.html">Gabinetes <span>3</span></a></li><li><a href="categorias/refrigeracion-liquida.html">Refrigeración líquida <span>3</span></a></li><li><a href="categorias/disipadores.html">Disipadores <span>3</span></a></li><li><a href="categorias/ventiladores.html">Ventiladores <span>3</span></a></li></ul></nav>
+      <nav aria-labelledby="h-nav"><h3 id="h-nav">Navegación</h3><ul class="panel-lista-enlaces">
+        <li><a href="index.html">Inicio</a></li><li><a href="productos.html">Todo el catálogo</a></li>
+        <li><a href="ofertas.html">Ofertas <span>8</span></a></li>
+        <li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li>
+        <li><a href="preguntas.html">Preguntas Frecuentes</a></li>
+      </ul></nav>
+      <nav aria-labelledby="h-cuenta"><h3 id="h-cuenta">Cuenta</h3><ul class="panel-lista-enlaces">
+        <li data-auth="guest"><a href="login.html">Iniciar sesión</a></li>
+        <li data-auth="guest"><a href="registro.html">Registrarse</a></li>
+        <li data-auth="user" hidden><a href="perfil.html">Mi perfil</a></li>
+        <li data-auth="user" hidden><a href="#" data-accion="logout">Cerrar sesión</a></li>
+      </ul></nav>
+    </div>
+  </aside>
+
+  <aside id="panel-carrito" class="panel" aria-labelledby="t-carrito" aria-hidden="true">
+    <div class="panel-cabecera"><h2 id="t-carrito">Tu carrito</h2><button type="button" class="cerrar-panel" data-cerrar-panel aria-label="Cerrar carrito">&times;</button></div>
+    <ul id="carrito-lista" class="panel-scroll"></ul>
+    <p class="carrito-total"><span>Total</span><span id="carrito-total">S/ 0.00</span></p>
+    <div class="carrito-acciones">
+      <button type="button" id="carrito-pagar" class="btn btn-primario">Pagar ahora</button>
+      <button type="button" id="carrito-vaciar" class="btn btn-sec">Vaciar carrito</button>
+    </div>
+  </aside>
+  <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+  
+  <dialog id="pago" class="modal modal-pago" aria-labelledby="pago-titulo">
+    <div class="modal-caja pago-caja">
+      <button type="button" class="cerrar-panel modal-cerrar" data-cerrar-pago aria-label="Cerrar pago">&times;</button>
+      <section id="pago-form-vista">
+        <h2 id="pago-titulo">Finalizar compra</h2>
+        <p class="intro">Total a pagar: <strong id="pago-total"></strong>. Es una simulación: no ingreses datos reales.</p>
+        <form id="form-pago" novalidate>
+          <fieldset class="metodos"><legend>Método de pago</legend><label class="chip"><input type="radio" name="metodo" value="visa" checked><span>Visa</span></label><label class="chip"><input type="radio" name="metodo" value="mastercard"><span>Mastercard</span></label><label class="chip"><input type="radio" name="metodo" value="yape"><span>Yape</span></label><label class="chip"><input type="radio" name="metodo" value="plin"><span>Plin</span></label></fieldset>
+          <div id="pago-tarjeta">
+            <div class="campo">
+          <label for="titular">Titular de la tarjeta</label>
+          <input type="text" id="titular" name="titular" autocomplete="cc-name" aria-describedby="err-titular" required>
+          <p class="error-msg" id="err-titular"></p>
+        </div>
+            <div class="campo">
+          <label for="tarjeta">Número de tarjeta</label>
+          <input type="text" id="tarjeta" name="tarjeta" autocomplete="cc-number" aria-describedby="err-tarjeta ay-tarjeta" required inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000">
+          <p class="ayuda" id="ay-tarjeta">Para probar: 4242 4242 4242 4242 (Visa) o 5555 5555 5555 4444 (Mastercard).</p><p class="error-msg" id="err-tarjeta"></p>
+        </div>
+            <div class="fila-2">
+              <div class="campo">
+          <label for="vence">Vencimiento</label>
+          <input type="text" id="vence" name="vence" autocomplete="cc-exp" aria-describedby="err-vence" required inputmode="numeric" maxlength="5" placeholder="MM/AA">
+          <p class="error-msg" id="err-vence"></p>
+        </div>
+              <div class="campo">
+          <label for="cvv">CVV</label>
+          <input type="password" id="cvv" name="cvv" autocomplete="cc-csc" aria-describedby="err-cvv" required inputmode="numeric" maxlength="4" placeholder="123">
+          <p class="error-msg" id="err-cvv"></p>
+        </div>
+            </div>
+          </div>
+          <div id="pago-movil" hidden>
+            <div class="campo">
+          <label for="celular">Celular registrado</label>
+          <input type="tel" id="celular" name="celular" autocomplete="tel" aria-describedby="err-celular ay-celular" required inputmode="numeric" maxlength="9" placeholder="987654321">
+          <p class="ayuda" id="ay-celular">Recibirás una solicitud de pago en tu app.</p><p class="error-msg" id="err-celular"></p>
+        </div>
+            <div class="campo">
+          <label for="codigo">Código de aprobación</label>
+          <input type="text" id="codigo" name="codigo" autocomplete="one-time-code" aria-describedby="err-codigo ay-codigo" required inputmode="numeric" maxlength="6" placeholder="123456">
+          <p class="ayuda" id="ay-codigo">6 dígitos que verás en tu app.</p><p class="error-msg" id="err-codigo"></p>
+        </div>
+          </div>
+          <button type="submit" class="btn btn-oscuro" id="pago-boton">Pagar</button>
+        </form>
+        <p class="estado-form" role="status" aria-live="polite"></p>
+      </section>
+      <section id="pago-ok-vista" tabindex="-1" hidden>
+        <h2>¡Pago aprobado!</h2>
+        <p id="pago-ok-texto"></p>
+        <button type="button" class="btn btn-oscuro" data-cerrar-pago>Seguir comprando</button>
+      </section>
+    </div>
+  </dialog>
+
+  <main id="contenido" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-titulo">
+      <div class="hero-texto">
+        <p class="eyebrow eyebrow-claro">Tienda de hardware · Lima</p>
+        <h1 id="hero-titulo">Arma tu PC con hardware que <span class="resalte">sí rinde</span></h1>
+        <p>Tarjetas de video, procesadores, memoria y almacenamiento con 12 meses de garantía y envío a Lima en 24-48 horas.</p>
+        <div class="hero-acciones">
+          <a href="ofertas.html" class="btn btn-primario">Ver ofertas</a>
+          <a href="productos.html" class="btn btn-sec">Explorar catálogo</a>
+        </div>
+      </div>
+      <figure class="hero-figura">
+        <img src="imágenes/GPU_RTX_4070gigabyte.jpeg" alt="Tarjeta de video NVIDIA RTX 4070 de Gigabyte, producto estrella de la tienda" width="640" height="480">
+        <figcaption>RTX 4070 en oferta: S/ 2,124.00</figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="t-confianza">
+      <h2 id="t-confianza" class="solo-lector">Ventajas de comprar en ShopWare</h2>
+      <ul class="confianza">
+        <li><span class="icono" aria-hidden="true">🚚</span><div><strong>Envío en 24-48 h</strong><span>A todo Lima</span></div></li>
+        <li><span class="icono" aria-hidden="true">🛡️</span><div><strong>12 meses de garantía</strong><span>En todos los productos</span></div></li>
+        <li><span class="icono" aria-hidden="true">💳</span><div><strong>Paga como prefieras</strong><span>Visa, Mastercard, Yape o Plin</span></div></li>
+        <li><span class="icono" aria-hidden="true">🎧</span><div><strong>Asesoría técnica</strong><span>Te ayudamos a elegir</span></div></li>
+      </ul>
+    </section>
+
+    <div class="cinta" aria-hidden="true"><div class="cinta-pista"><span>LOGITECH</span><span>REDRAGON</span><span>HYPERX</span><span>LG</span><span>SAMSUNG</span><span>RAZER</span><span>EDIFIER</span><span>FIFINE</span><span>BLUE</span><span>MICROSOFT</span><span>SONY</span><span>8BITDO</span><span>GIGABYTE</span><span>MSI</span><span>ASUS</span><span>AMD</span><span>KINGSTON</span><span>G.SKILL</span><span>RANDIRK</span><span>SEAGATE</span><span>COOLER MASTER</span><span>CORSAIR</span><span>NZXT</span><span>LIAN LI</span><span>ARCTIC</span><span>DEEPCOOL</span><span>THERMALRIGHT</span><span>NOCTUA</span><span>LOGITECH</span><span>REDRAGON</span><span>HYPERX</span><span>LG</span><span>SAMSUNG</span><span>RAZER</span><span>EDIFIER</span><span>FIFINE</span><span>BLUE</span><span>MICROSOFT</span><span>SONY</span><span>8BITDO</span><span>GIGABYTE</span><span>MSI</span><span>ASUS</span><span>AMD</span><span>KINGSTON</span><span>G.SKILL</span><span>RANDIRK</span><span>SEAGATE</span><span>COOLER MASTER</span><span>CORSAIR</span><span>NZXT</span><span>LIAN LI</span><span>ARCTIC</span><span>DEEPCOOL</span><span>THERMALRIGHT</span><span>NOCTUA</span></div></div>
+
+    <section class="seccion revelar" aria-labelledby="t-cats">
+      <div class="seccion-titulo"><div><p class="eyebrow">01 · Catálogo</p><h2 id="t-cats">Compra por categoría</h2></div></div>
+      <div class="categorias">
+        <a href="productos.html#perifericos" class="categoria-card"><h3>Periféricos</h3><p>Mouse, teclados, monitores, audio, micrófonos y más</p><span class="categoria-meta" data-cat-meta="perifericos">9 familias · 27 productos</span><span class="categoria-flecha" aria-hidden="true">→</span></a>
+        <a href="productos.html#componentes" class="categoria-card"><h3>Componentes para la PC</h3><p>Video, procesadores, RAM, almacenamiento, refrigeración y más</p><span class="categoria-meta" data-cat-meta="componentes">10 familias · 30 productos</span><span class="categoria-flecha" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="seccion revelar" aria-labelledby="t-destacados">
+      <div class="seccion-titulo"><div><p class="eyebrow">02 · Lo más buscado</p><h2 id="t-destacados">Destacados</h2></div><a class="enlace-flecha" href="productos.html">Ver todo el catálogo →</a></div>
+      <div class="carrusel" id="carrusel" role="region" aria-roledescription="carrusel" aria-label="Productos destacados">
+        <div class="carrusel-vista">
+        <article class="slide activa" role="group" aria-roledescription="diapositiva" aria-label="1 de 5">
+          <img src="imágenes/GPU_RTX_4070gigabyte.jpeg" alt="Tarjeta de video NVIDIA RTX 4070 de Gigabyte" width="640" height="480">
+          <div class="slide-info">
+            <p class="tipo">Gigabyte</p>
+            <h3>Tarjeta de Video RTX 4070</h3>
+            <div class="slide-precio"><p><span class="precio-original"><span class="solo-lector">Precio original </span>S/ 2,499.00</span><span class="precio-oferta"><span class="solo-lector">Precio en oferta </span>S/ 2,124.00</span></p></div>
+            <div class="slide-acciones">
+              <a class="btn btn-primario" href="categorias/tarjetas-de-video.html?p=rtx4070">Ver detalles<span class="solo-lector">: Tarjeta de Video RTX 4070</span></a>
+              <button type="button" class="btn btn-primario" data-agregar data-id="rtx4070" data-nombre="Tarjeta de Video RTX 4070" data-precio="2124" aria-label="Agregar Tarjeta de Video RTX 4070 al carrito">Agregar al carrito</button>
+            </div>
+          </div>
+        </article>
+        <article class="slide" role="group" aria-roledescription="diapositiva" aria-label="2 de 5">
+          <img src="imágenes/CPU_Ryzen_7_8700G.jpg" alt="Procesador AMD Ryzen 7 8700G" width="640" height="480" loading="lazy">
+          <div class="slide-info">
+            <p class="tipo">AMD</p>
+            <h3>Procesador Ryzen 7</h3>
+            <div class="slide-precio"><p class="precio">S/ 1,199.00</p></div>
+            <div class="slide-acciones">
+              <a class="btn btn-primario" href="categorias/procesadores.html?p=ryzen7">Ver detalles<span class="solo-lector">: Procesador Ryzen 7</span></a>
+              <button type="button" class="btn btn-primario" data-agregar data-id="ryzen7" data-nombre="Procesador Ryzen 7" data-precio="1199" aria-label="Agregar Procesador Ryzen 7 al carrito">Agregar al carrito</button>
+            </div>
+          </div>
+        </article>
+        <article class="slide" role="group" aria-roledescription="diapositiva" aria-label="3 de 5">
+          <img src="imágenes/g502.jpg" alt="Mouse gamer Logitech G502 Hero con botones laterales" width="640" height="480" loading="lazy">
+          <div class="slide-info">
+            <p class="tipo">Logitech</p>
+            <h3>Logitech G502 Hero</h3>
+            <div class="slide-precio"><p><span class="precio-original"><span class="solo-lector">Precio original </span>S/ 289.00</span><span class="precio-oferta"><span class="solo-lector">Precio en oferta </span>S/ 260.00</span></p></div>
+            <div class="slide-acciones">
+              <a class="btn btn-primario" href="categorias/mouse.html?p=g502">Ver detalles<span class="solo-lector">: Logitech G502 Hero</span></a>
+              <button type="button" class="btn btn-primario" data-agregar data-id="g502" data-nombre="Logitech G502 Hero" data-precio="260" aria-label="Agregar Logitech G502 Hero al carrito">Agregar al carrito</button>
+            </div>
+          </div>
+        </article>
+        <article class="slide" role="group" aria-roledescription="diapositiva" aria-label="4 de 5">
+          <img src="imágenes/tridentz5.jpg" alt="Kit de memoria G.SKILL Trident Z5 RGB DDR5 de 32 GB" width="640" height="480" loading="lazy">
+          <div class="slide-info">
+            <p class="tipo">G.SKILL</p>
+            <h3>G.SKILL Trident Z5 RGB 32GB DDR5</h3>
+            <div class="slide-precio"><p><span class="precio-original"><span class="solo-lector">Precio original </span>S/ 649.00</span><span class="precio-oferta"><span class="solo-lector">Precio en oferta </span>S/ 571.00</span></p></div>
+            <div class="slide-acciones">
+              <a class="btn btn-primario" href="categorias/memoria-ram.html?p=tridentz5">Ver detalles<span class="solo-lector">: G.SKILL Trident Z5 RGB 32GB DDR5</span></a>
+              <button type="button" class="btn btn-primario" data-agregar data-id="tridentz5" data-nombre="G.SKILL Trident Z5 RGB 32GB DDR5" data-precio="571" aria-label="Agregar G.SKILL Trident Z5 RGB 32GB DDR5 al carrito">Agregar al carrito</button>
+            </div>
+          </div>
+        </article>
+        <article class="slide" role="group" aria-roledescription="diapositiva" aria-label="5 de 5">
+          <img src="imágenes/odysseyg5.jpg" alt="Monitor curvo Samsung Odyssey G5 de 27 pulgadas QHD" width="640" height="480" loading="lazy">
+          <div class="slide-info">
+            <p class="tipo">Samsung</p>
+            <h3>Samsung Odyssey G5 27"</h3>
+            <div class="slide-precio"><p class="precio">S/ 1,099.00</p></div>
+            <div class="slide-acciones">
+              <a class="btn btn-primario" href="categorias/monitores.html?p=odysseyg5">Ver detalles<span class="solo-lector">: Samsung Odyssey G5 27"</span></a>
+              <button type="button" class="btn btn-primario" data-agregar data-id="odysseyg5" data-nombre="Samsung Odyssey G5 27"" data-precio="1099" aria-label="Agregar Samsung Odyssey G5 27" al carrito">Agregar al carrito</button>
+            </div>
+          </div>
+        </article>
+          <div class="carrusel-controles">
+            <button type="button" id="carrusel-prev" aria-label="Producto anterior">‹</button>
+            <button type="button" id="carrusel-pausa" aria-pressed="false">Pausar</button>
+            <button type="button" id="carrusel-next" aria-label="Producto siguiente">›</button>
+          </div>
+        </div>
+        <div class="carrusel-mini">
+          <button type="button" aria-label="Ver Tarjeta de Video RTX 4070" aria-current="true"><img src="imágenes/GPU_RTX_4070gigabyte.jpeg" alt="" width="80" height="80" loading="lazy"></button>
+          <button type="button" aria-label="Ver Procesador Ryzen 7" aria-current="false"><img src="imágenes/CPU_Ryzen_7_8700G.jpg" alt="" width="80" height="80" loading="lazy"></button>
+          <button type="button" aria-label="Ver Logitech G502 Hero" aria-current="false"><img src="imágenes/g502.jpg" alt="" width="80" height="80" loading="lazy"></button>
+          <button type="button" aria-label="Ver G.SKILL Trident Z5 RGB 32GB DDR5" aria-current="false"><img src="imágenes/tridentz5.jpg" alt="" width="80" height="80" loading="lazy"></button>
+          <button type="button" aria-label="Ver Samsung Odyssey G5 27"" aria-current="false"><img src="imágenes/odysseyg5.jpg" alt="" width="80" height="80" loading="lazy"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" aria-labelledby="t-testimonios">
+      <div class="seccion-titulo"><div><p class="eyebrow">03 · Clientes</p><h2 id="t-testimonios">Lo que dicen quienes compran</h2></div><a class="enlace-flecha" href="productos.html">Compra y deja tu calificación →</a></div>
+      <!-- Testimonios de ejemplo: reemplázalos por opiniones reales de tus clientes -->
+      <div class="testimonios">
+        <figure class="testimonio revelar">
+          <span class="estrellas" role="img" aria-label="Calificación 5 de 5"><span class="estrellas-fill" style="width:100%"></span></span>
+          <blockquote><p>Armé mi primera PC con la ayuda de su soporte: me recomendaron una fuente y un gabinete que sí eran compatibles. Todo llegó en menos de 48 horas.</p></blockquote>
+          <figcaption><strong>Diego R.</strong><span>Lima · Compró: Procesadores y placas madre</span></figcaption>
+        </figure>
+        <figure class="testimonio revelar">
+          <span class="estrellas" role="img" aria-label="Calificación 5 de 5"><span class="estrellas-fill" style="width:100%"></span></span>
+          <blockquote><p>Pagué con Yape en un minuto y el pedido llegó bien embalado. La garantía de 12 meses me da tranquilidad para comprar online.</p></blockquote>
+          <figcaption><strong>Andrea V.</strong><span>Lima · Compró: Audífonos</span></figcaption>
+        </figure>
+        <figure class="testimonio revelar">
+          <span class="estrellas" role="img" aria-label="Calificación 4 de 5"><span class="estrellas-fill" style="width:80%"></span></span>
+          <blockquote><p>Compré un monitor y un teclado para teletrabajar. Buenos precios y la página es muy fácil de usar, encontré todo con los filtros.</p></blockquote>
+          <figcaption><strong>Luis M.</strong><span>Arequipa · Compró: Monitores y teclados</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="seccion revelar" aria-labelledby="t-media">
+      <article class="multimedia-card">
+        <p class="eyebrow">04 · Video</p>
+        <h2 id="t-media">Conoce ShopWare</h2>
+        <p>Descubre nuestra variedad en hardware y componentes de alta gama.</p>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube-nocookie.com/embed/uKiLKBLJnXo" title="Video promocional de ShopWare" loading="lazy"
+                  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="sitio-footer">
+    <div class="footer-columnas">
+      <section class="footer-col"><h2>ShopWare</h2><p>Los mejores componentes de hardware al mejor precio.</p></section>
+      <nav class="footer-col" aria-label="Enlaces del sitio"><h2>Enlaces</h2><ul>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="preguntas.html">Preguntas Frecuentes</a></li>
+        <li><a href="ofertas.html">Ofertas</a></li>
+      </ul></nav>
+      <nav class="footer-col" aria-label="Redes sociales"><h2>Síguenos</h2><ul>
+        <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook<span class="solo-lector"> (se abre en una pestaña nueva)</span></a></li>
+        <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram<span class="solo-lector"> (se abre en una pestaña nueva)</span></a></li>
+        <li><a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">TikTok<span class="solo-lector"> (se abre en una pestaña nueva)</span></a></li>
+      </ul></nav>
+      <section class="footer-col"><h2>Métodos de pago</h2><ul class="pagos"><li>Visa</li><li>Mastercard</li><li>Yape</li><li>Plin</li></ul></section>
+    </div>
+    <p class="footer-copy">&copy; 2026 ShopWare. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

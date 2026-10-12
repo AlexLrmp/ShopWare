@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Crea tu cuenta de ShopWare.">
+  <title>ShopWare - Registro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/data.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/payment.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="registro">
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+  <header class="sitio-header">
+    <div class="header-barra">
+      <a href="index.html" class="logo" aria-label="ShopWare, ir al inicio"><span class="logo-marca" aria-hidden="true"></span>ShopWare</a>
+      <nav id="menu-principal" class="menu-principal" aria-label="Navegación principal">
+        <a href="productos.html">Productos</a>
+        <a href="ofertas.html">Ofertas</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="login.html" data-auth="guest">Iniciar sesión</a>
+        <a href="registro.html" class="nav-destacado" data-auth="guest">Registrarse</a>
+        <span id="saludo" class="saludo" data-auth="user" hidden></span>
+        <button type="button" data-auth="user" data-accion="logout" hidden>Salir</button>
+      </nav>
+      <div class="header-acciones">
+        <button type="button" class="btn-icono" data-abre="panel-carrito" aria-haspopup="dialog" aria-expanded="false" aria-controls="panel-carrito" aria-label="Abrir carrito de compras">🛒 <span id="carrito-contador" class="contador" aria-live="polite">0</span></button>
+      </div>
+    </div>
+  </header>
+  <div id="overlay" class="overlay"></div>
+  <button type="button" class="fab" data-abre="panel-lista" aria-haspopup="dialog" aria-expanded="false" aria-controls="panel-lista" aria-label="Abrir menú: categorías y búsqueda rápida"><span class="fab-barras" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  <button type="button" id="btn-audio" class="fab-audio" aria-pressed="false" aria-label="Activar música ambiental">🔇</button>
+  <audio id="audio-ambiente" loop preload="none"><source src="media/audio-promo.mp3" type="audio/mpeg"></audio>
+
+  <aside id="panel-lista" class="panel izq" aria-labelledby="t-lista" aria-hidden="true">
+    <div class="panel-cabecera"><h2 id="t-lista">Explorar ShopWare</h2><button type="button" class="cerrar-panel" data-cerrar-panel aria-label="Cerrar menú">&times;</button></div>
+    <div class="busqueda-rapida">
+      <label for="busqueda-rapida" class="solo-lector">Buscar productos y categorías</label>
+      <input type="search" id="busqueda-rapida" placeholder="Buscar productos…" autocomplete="off" aria-controls="resultados-rapidos">
+    </div>
+    <p id="rapida-info" class="solo-lector" aria-live="polite"></p>
+    <ul id="resultados-rapidos" class="panel-lista-enlaces panel-scroll" hidden></ul>
+    <div id="panel-base" class="panel-scroll">
+      <nav aria-labelledby="h-per"><h3 id="h-per">Periféricos</h3><ul class="panel-lista-enlaces"><li><a href="teclados-mouse.html">Teclados y Mouse <span>2</span></a></li><li><a href="monitores-camaras.html">Monitores y Cámaras <span>2</span></a></li><li><a href="audio.html">Audio <span>2</span></a></li></ul></nav>
+      <nav aria-labelledby="h-com"><h3 id="h-com">Componentes para la PC</h3><ul class="panel-lista-enlaces"><li><a href="procesadores-gpus.html">Procesadores y Tarjetas de Video <span>2</span></a></li><li><a href="memoria-almacenamiento.html">Memoria y Almacenamiento <span>2</span></a></li><li><a href="base-pc.html">Placas, Fuentes y Gabinetes <span>3</span></a></li>
+        <li><a href="ofertas.html">Ofertas <span>3</span></a></li></ul></nav>
+      <nav aria-labelledby="h-nav"><h3 id="h-nav">Navegación</h3><ul class="panel-lista-enlaces">
+        <li><a href="index.html">Inicio</a></li><li><a href="productos.html">Todo el catálogo</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li>
+        <li><a href="preguntas.html">Preguntas Frecuentes</a></li>
+      </ul></nav>
+      <nav aria-labelledby="h-cuenta"><h3 id="h-cuenta">Cuenta</h3><ul class="panel-lista-enlaces">
+        <li data-auth="guest"><a href="login.html">Iniciar sesión</a></li>
+        <li data-auth="guest"><a href="registro.html">Registrarse</a></li>
+        <li data-auth="user" hidden><a href="perfil.html">Mi perfil</a></li>
+        <li data-auth="user" hidden><a href="#" data-accion="logout">Cerrar sesión</a></li>
+      </ul></nav>
+    </div>
+  </aside>
+
+  <aside id="panel-carrito" class="panel" aria-labelledby="t-carrito" aria-hidden="true">
+    <div class="panel-cabecera"><h2 id="t-carrito">Tu carrito</h2><button type="button" class="cerrar-panel" data-cerrar-panel aria-label="Cerrar carrito">&times;</button></div>
+    <ul id="carrito-lista" class="panel-scroll"></ul>
+    <p class="carrito-total"><span>Total</span><span id="carrito-total">S/ 0.00</span></p>
+    <div class="carrito-acciones">
+      <button type="button" id="carrito-pagar" class="btn btn-primario">Pagar ahora</button>
+      <button type="button" id="carrito-vaciar" class="btn btn-sec">Vaciar carrito</button>
+    </div>
+  </aside>
+  <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+  
+  <dialog id="pago" class="modal modal-pago" aria-labelledby="pago-titulo">
+    <div class="modal-caja pago-caja">
+      <button type="button" class="cerrar-panel modal-cerrar" data-cerrar-pago aria-label="Cerrar pago">&times;</button>
+      <section id="pago-form-vista">
+        <h2 id="pago-titulo">Finalizar compra</h2>
+        <p class="intro">Total a pagar: <strong id="pago-total"></strong>. Es una simulación: no ingreses datos reales.</p>
+        <form id="form-pago" novalidate>
+          <fieldset class="metodos"><legend>Método de pago</legend><label class="chip"><input type="radio" name="metodo" value="visa" checked><span>Visa</span></label><label class="chip"><input type="radio" name="metodo" value="mastercard"><span>Mastercard</span></label><label class="chip"><input type="radio" name="metodo" value="yape"><span>Yape</span></label><label class="chip"><input type="radio" name="metodo" value="plin"><span>Plin</span></label></fieldset>
+          <div id="pago-tarjeta">
+            <div class="campo">
+          <label for="titular">Titular de la tarjeta</label>
+          <input type="text" id="titular" name="titular" autocomplete="cc-name" aria-describedby="err-titular" required>
+          <p class="error-msg" id="err-titular"></p>
+        </div>
+            <div class="campo">
+          <label for="tarjeta">Número de tarjeta</label>
+          <input type="text" id="tarjeta" name="tarjeta" autocomplete="cc-number" aria-describedby="err-tarjeta ay-tarjeta" required inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000">
+          <p class="ayuda" id="ay-tarjeta">Para probar: 4242 4242 4242 4242 (Visa) o 5555 5555 5555 4444 (Mastercard).</p><p class="error-msg" id="err-tarjeta"></p>
+        </div>
+            <div class="fila-2">
+              <div class="campo">
+          <label for="vence">Vencimiento</label>
+          <input type="text" id="vence" name="vence" autocomplete="cc-exp" aria-describedby="err-vence" required inputmode="numeric" maxlength="5" placeholder="MM/AA">
+          <p class="error-msg" id="err-vence"></p>
+        </div>
+              <div class="campo">
+          <label for="cvv">CVV</label>
+          <input type="password" id="cvv" name="cvv" autocomplete="cc-csc" aria-describedby="err-cvv" required inputmode="numeric" maxlength="4" placeholder="123">
+          <p class="error-msg" id="err-cvv"></p>
+        </div>
+            </div>
+          </div>
+          <div id="pago-movil" hidden>
+            <div class="campo">
+          <label for="celular">Celular registrado</label>
+          <input type="tel" id="celular" name="celular" autocomplete="tel" aria-describedby="err-celular ay-celular" required inputmode="numeric" maxlength="9" placeholder="987654321">
+          <p class="ayuda" id="ay-celular">Recibirás una solicitud de pago en tu app.</p><p class="error-msg" id="err-celular"></p>
+        </div>
+            <div class="campo">
+          <label for="codigo">Código de aprobación</label>
+          <input type="text" id="codigo" name="codigo" autocomplete="one-time-code" aria-describedby="err-codigo ay-codigo" required inputmode="numeric" maxlength="6" placeholder="123456">
+          <p class="ayuda" id="ay-codigo">6 dígitos que verás en tu app.</p><p class="error-msg" id="err-codigo"></p>
+        </div>
+          </div>
+          <button type="submit" class="btn btn-oscuro" id="pago-boton">Pagar</button>
+        </form>
+        <p class="estado-form" role="status" aria-live="polite"></p>
+      </section>
+      <section id="pago-ok-vista" tabindex="-1" hidden>
+        <h2>¡Pago aprobado!</h2>
+        <p id="pago-ok-texto"></p>
+        <button type="button" class="btn btn-oscuro" data-cerrar-pago>Seguir comprando</button>
+      </section>
+    </div>
+  </dialog>
+
+  <main id="contenido" tabindex="-1">
+    <section class="tarjeta-centrada" aria-labelledby="t-reg">
+      <h1 id="t-reg">Crear cuenta</h1>
+      <p class="intro">Regístrate en menos de un minuto.</p>
+      <form id="form-registro" novalidate>
+        <div class="campo">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name" aria-describedby="err-nombre" required>
+          <p class="error-msg" id="err-nombre"></p>
+        </div>
+        <div class="campo">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" autocomplete="email" aria-describedby="err-email" required>
+          <p class="error-msg" id="err-email"></p>
+        </div>
+        <div class="campo campo-password">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" autocomplete="new-password" aria-describedby="err-password" required>
+          <p class="error-msg" id="err-password"></p>
+        </div>
+        <div class="medidor" id="medidor" data-nivel="0" aria-hidden="true"><span></span></div>
+        <p class="ayuda" id="fuerza" style="margin:-.6rem 0 1rem" aria-live="polite">Mínimo 8 caracteres con letras y números.</p>
+        <div class="campo campo-password">
+          <label for="confirmar">Confirmar contraseña</label>
+          <input type="password" id="confirmar" name="confirmar" autocomplete="new-password" aria-describedby="err-confirmar" required>
+          <p class="error-msg" id="err-confirmar"></p>
+        </div>
+        <button type="submit" class="btn btn-oscuro">Registrarse</button>
+      </form>
+      <p class="estado-form" role="status" aria-live="polite"></p>
+      <p class="enlace-extra">¿Ya tienes una cuenta? <a href="login.html">Inicia sesión aquí</a></p>
+    </section>
+  </main>
+
+  <footer class="sitio-footer">
+    <div class="footer-columnas">
+      <section class="footer-col"><h2>ShopWare</h2><p>Los mejores componentes de hardware al mejor precio.</p></section>
+      <nav class="footer-col" aria-label="Enlaces del sitio"><h2>Enlaces</h2><ul>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="preguntas.html">Preguntas Frecuentes</a></li>
+        <li><a href="ofertas.html">Ofertas</a></li>
+      </ul></nav>
+      <nav class="footer-col" aria-label="Redes sociales"><h2>Síguenos</h2><ul>
+        <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook<span class="solo-lector"> (se abre en una pestaña nueva)</span></a></li>
+        <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram<span class="solo-lector"> (se abre en una pestaña nueva)</span></a></li>
+        <li><a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">TikTok<span class="solo-lector"> (se abre en una pestaña nueva)</span></a></li>
+      </ul></nav>
+      <section class="footer-col"><h2>Métodos de pago</h2><ul class="pagos"><li>Visa</li><li>Mastercard</li><li>Yape</li><li>Plin</li></ul></section>
+    </div>
+    <p class="footer-copy">&copy; 2026 ShopWare. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

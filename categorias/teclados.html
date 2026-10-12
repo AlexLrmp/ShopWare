@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Teclados mecánicos y de membrana para máxima velocidad. Compra en ShopWare.">
+  <title>ShopWare - Teclados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/data.js" defer></script>
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/auth.js" defer></script>
+  <script src="../js/cart.js" defer></script>
+  <script src="../js/payment.js" defer></script>
+  <script src="../js/catalog.js" defer></script>
+  <script src="../js/reviews.js" defer></script>
+  <script src="../js/modal.js" defer></script>
+  <script src="../js/filters.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</head>
+<body data-page="familia" data-base="../" data-familia="teclados">
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+  <header class="sitio-header">
+    <div class="header-barra">
+      <a href="../index.html" class="logo" aria-label="ShopWare, ir al inicio"><span class="logo-marca" aria-hidden="true"></span>ShopWare</a>
+      <nav id="menu-principal" class="menu-principal" aria-label="Navegación principal">
+        <a href="../productos.html" aria-current="true">Productos</a>
+        <a href="../ofertas.html">Ofertas</a>
+        <a href="../perfil.html">Perfil</a>
+        <a href="../login.html" data-auth="guest">Iniciar sesión</a>
+        <a href="../registro.html" class="nav-destacado" data-auth="guest">Registrarse</a>
+        <span id="saludo" class="saludo" data-auth="user" hidden></span>
+        <button type="button" data-auth="user" data-accion="logout" hidden>Salir</button>
+      </nav>
+      <div class="header-acciones">
+        <button type="button" class="btn-icono" data-abre="panel-carrito" aria-haspopup="dialog" aria-expanded="false" aria-controls="panel-carrito" aria-label="Abrir carrito de compras">🛒 <span id="carrito-contador" class="contador" aria-live="polite">0</span></button>
+      </div>
+    </div>
+  </header>
+  <div id="overlay" class="overlay"></div>
+  <button type="button" class="fab" data-abre="panel-lista" aria-haspopup="dialog" aria-expanded="false" aria-controls="panel-lista" aria-label="Abrir menú: categorías y búsqueda rápida"><span class="fab-barras" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  <button type="button" id="btn-audio" class="fab-audio" aria-pressed="false" aria-label="Activar música ambiental">🔇</button>
+  <audio id="audio-ambiente" loop preload="none"><source src="../media/audio-promo.mp3" type="audio/mpeg"></audio>
+
+  <aside id="panel-lista" class="panel izq" aria-labelledby="t-lista" aria-hidden="true">
+    <div class="panel-cabecera"><h2 id="t-lista">Explorar ShopWare</h2><button type="button" class="cerrar-panel" data-cerrar-panel aria-label="Cerrar menú">&times;</button></div>
+    <div class="busqueda-rapida">
+      <label for="busqueda-rapida" class="solo-lector">Buscar productos y categorías</label>
+      <input type="search" id="busqueda-rapida" placeholder="Buscar productos o marcas…" autocomplete="off" aria-controls="resultados-rapidos">
+    </div>
+    <p id="rapida-info" class="solo-lector" aria-live="polite"></p>
+    <ul id="resultados-rapidos" class="panel-lista-enlaces panel-scroll" hidden></ul>
+    <div id="panel-base" class="panel-scroll">
+      <nav aria-labelledby="h-per"><h3 id="h-per">Periféricos</h3><ul class="panel-lista-enlaces"><li><a href="../categorias/mouse.html">Mouse <span>3</span></a></li><li><a href="../categorias/teclados.html">Teclados <span>3</span></a></li><li><a href="../categorias/monitores.html">Monitores <span>3</span></a></li><li><a href="../categorias/audifonos.html">Audífonos <span>3</span></a></li><li><a href="../categorias/parlantes.html">Parlantes <span>3</span></a></li><li><a href="../categorias/webcams.html">Webcams <span>3</span></a></li><li><a href="../categorias/microfonos.html">Micrófonos <span>3</span></a></li><li><a href="../categorias/mousepads.html">Mousepads <span>3</span></a></li><li><a href="../categorias/gamepads.html">Gamepads <span>3</span></a></li></ul></nav>
+      <nav aria-labelledby="h-com"><h3 id="h-com">Componentes para la PC</h3><ul class="panel-lista-enlaces"><li><a href="../categorias/tarjetas-de-video.html">Tarjetas de video <span>3</span></a></li><li><a href="../categorias/procesadores.html">Procesadores <span>3</span></a></li><li><a href="../categorias/memoria-ram.html">Memoria RAM <span>3</span></a></li><li><a href="../categorias/almacenamiento.html">Almacenamiento <span>3</span></a></li><li><a href="../categorias/placas-madre.html">Placas madre <span>3</span></a></li><li><a href="../categorias/fuentes-de-poder.html">Fuentes de poder <span>3</span></a></li><li><a href="../categorias/gabinetes.html">Gabinetes <span>3</span></a></li><li><a href="../categorias/refrigeracion-liquida.html">Refrigeración líquida <span>3</span></a></li><li><a href="../categorias/disipadores.html">Disipadores <span>3</span></a></li><li><a href="../categorias/ventiladores.html">Ventiladores <span>3</span></a></li></ul></nav>
+      <nav aria-labelledby="h-nav"><h3 id="h-nav">Navegación</h3><ul class="panel-lista-enlaces">
+        <li><a href="../index.html">Inicio</a></li><li><a href="../productos.html">Todo el catálogo</a></li>
+        <li><a href="../ofertas.html">Ofertas <span>8</span></a></li>
+        <li><a href="../nosotros.html">Nosotros</a></li><li><a href="../contacto.html">Contacto</a></li>
+        <li><a href="../preguntas.html">Preguntas Frecuentes</a></li>
+      </ul></nav>
+      <nav aria-labelledby="h-cuenta"><h3 id="h-cuenta">Cuenta</h3><ul class="panel-lista-enlaces">
+        <li data-auth="guest"><a href="../login.html">Iniciar sesión</a></li>
+        <li data-auth="guest"><a href="../registro.html">Registrarse</a></li>
+        <li data-auth="user" hidden><a href="../perfil.html">Mi perfil</a></li>
+        <li data-auth="user" hidden><a href="#" data-accion="logout">Cerrar sesión</a></li>
+      </ul></nav>
+    </div>
+  </aside>
+
+  <aside id="panel-carrito" class="panel" aria-labelledby="t-carrito" aria-hidden="true">
+    <div class="panel-cabecera"><h2 id="t-carrito">Tu carrito</h2><button type="button" class="cerrar-panel" data-cerrar-panel aria-label="Cerrar carrito">&times;</button></div>
+    <ul id="carrito-lista" class="panel-scroll"></ul>
+    <p class="carrito-total"><span>Total</span><span id="carrito-total">S/ 0.00</span></p>
+    <div class="carrito-acciones">
+      <button type="button" id="carrito-pagar" class="btn btn-primario">Pagar ahora</button>
+      <button type="button" id="carrito-vaciar" class="btn btn-sec">Vaciar carrito</button>
+    </div>
+  </aside>
+  <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+  <dialog id="modal" class="modal" aria-labelledby="modal-titulo">
+    <div class="modal-caja">
+      <button type="button" class="cerrar-panel modal-cerrar" id="modal-cerrar" aria-label="Cerrar detalle del producto">&times;</button>
+      <div class="galeria" role="group" aria-roledescription="galería" aria-label="Imágenes del producto">
+        <figure class="galeria-principal"><img id="modal-img" src="" alt="" width="600" height="600"></figure>
+        <div class="galeria-controles">
+          <button type="button" id="modal-prev" aria-label="Imagen anterior">‹</button>
+          <button type="button" id="modal-pausa" aria-pressed="false">Pausar</button>
+          <button type="button" id="modal-next" aria-label="Imagen siguiente">›</button>
+        </div>
+        <div class="miniaturas" id="modal-thumbs"></div>
+      </div>
+      <div class="modal-info">
+        <h2 id="modal-titulo"></h2>
+        <div class="modal-precio" id="modal-precio"></div>
+        <p id="modal-desc"></p>
+        <table class="tabla-specs"><caption class="solo-lector">Especificaciones técnicas</caption><tbody id="modal-specs"></tbody></table>
+        <div class="modal-acciones">
+          <button type="button" class="btn btn-oscuro" id="modal-agregar" data-agregar>Agregar al carrito</button>
+          <button type="button" class="btn btn-primario" id="modal-comprar">Comprar ahora</button>
+        </div>
+      </div>
+      <section class="resenas" aria-labelledby="t-resenas">
+        <div class="res-col">
+          <h3 id="t-resenas">Calificaciones y reseñas</h3>
+          <div class="res-resumen"><strong id="res-prom" class="res-prom">–</strong><div><span id="res-estrellas"></span><p id="res-cuenta"></p></div></div>
+          <ul id="res-lista" class="res-lista"></ul>
+        </div>
+        <div class="res-col">
+          <form id="form-resena" class="res-form" novalidate aria-labelledby="t-res-form">
+            <h4 id="t-res-form">Califica este producto</h4>
+            <fieldset class="estrellas-input"><legend>Tu calificación</legend>
+              <div class="estrellas-radios"><input type="radio" name="estrellas" id="est5" value="5"><label for="est5" title="5 estrellas"><span class="solo-lector">5 estrellas</span></label><input type="radio" name="estrellas" id="est4" value="4"><label for="est4" title="4 estrellas"><span class="solo-lector">4 estrellas</span></label><input type="radio" name="estrellas" id="est3" value="3"><label for="est3" title="3 estrellas"><span class="solo-lector">3 estrellas</span></label><input type="radio" name="estrellas" id="est2" value="2"><label for="est2" title="2 estrellas"><span class="solo-lector">2 estrellas</span></label><input type="radio" name="estrellas" id="est1" value="1"><label for="est1" title="1 estrella"><span class="solo-lector">1 estrella</span></label></div>
+              <p class="error-msg" id="err-estrellas"></p></fieldset>
+            <div class="campo"><label for="rs-nombre">Nombre</label><input type="text" id="rs-nombre" autocomplete="name" aria-describedby="err-rs-nombre" required><p class="error-msg" id="err-rs-nombre"></p></div>
+            <div class="campo"><label for="rs-texto">Tu reseña</label><textarea id="rs-texto" maxlength="320" aria-describedby="err-rs-texto" required></textarea><p class="error-msg" id="err-rs-texto"></p></div>
+            <button type="submit" class="btn btn-oscuro">Publicar reseña</button>
+          </form>
+          <p class="estado-form" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+    </div>
+  </dialog>
+  <dialog id="pago" class="modal modal-pago" aria-labelledby="pago-titulo">
+    <div class="modal-caja pago-caja">
+      <button type="button" class="cerrar-panel modal-cerrar" data-cerrar-pago aria-label="Cerrar pago">&times;</button>
+      <section id="pago-form-vista">
+        <h2 id="pago-titulo">Finalizar compra</h2>
+        <p class="intro">Total a pagar: <strong id="pago-total"></strong>. Es una simulación: no ingreses datos reales.</p>
+        <form id="form-pago" novalidate>
+          <fieldset class="metodos"><legend>Método de pago</legend><label class="chip"><input type="radio" name="metodo" value="visa" checked><span>Visa</span></label><label class="chip"><input type="radio" name="metodo" value="mastercard"><span>Mastercard</span></label><label class="chip"><input type="radio" name="metodo" value="yape"><span>Yape</span></label><label class="chip"><input type="radio" name="metodo" value="plin"><span>Plin</span></label></fieldset>
+          <div id="pago-tarjeta">
+            <div class="campo">
+          <label for="titular">Titular de la tarjeta</label>
+          <input type="text" id="titular" name="titular" autocomplete="cc-name" aria-describedby="err-titular" required>
+          <p class="error-msg" id="err-titular"></p>
+        </div>
+            <div class="campo">
+          <label for="tarjeta">Número de tarjeta</label>
+          <input type="text" id="tarjeta" name="tarjeta" autocomplete="cc-number" aria-describedby="err-tarjeta ay-tarjeta" required inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000">
+          <p class="ayuda" id="ay-tarjeta">Para probar: 4242 4242 4242 4242 (Visa) o 5555 5555 5555 4444 (Mastercard).</p><p class="error-msg" id="err-tarjeta"></p>
+        </div>
+            <div class="fila-2">
+              <div class="campo">
+          <label for="vence">Vencimiento</label>
+          <input type="text" id="vence" name="vence" autocomplete="cc-exp" aria-describedby="err-vence" required inputmode="numeric" maxlength="5" placeholder="MM/AA">
+          <p class="error-msg" id="err-vence"></p>
+        </div>
+              <div class="campo">
+          <label for="cvv">CVV</label>
+          <input type="password" id="cvv" name="cvv" autocomplete="cc-csc" aria-describedby="err-cvv" required inputmode="numeric" maxlength="4" placeholder="123">
+          <p class="error-msg" id="err-cvv"></p>
+        </div>
+            </div>
+          </div>
+          <div id="pago-movil" hidden>
+            <div class="campo">
+          <label for="celular">Celular registrado</label>
+          <input type="tel" id="celular" name="celular" autocomplete="tel" aria-describedby="err-celular ay-celular" required inputmode="numeric" maxlength="9" placeholder="987654321">
+          <p class="ayuda" id="ay-celular">Recibirás una solicitud de pago en tu app.</p><p class="error-msg" id="err-celular"></p>
+        </div>
+            <div class="campo">
+          <label for="codigo">Código de aprobación</label>
+          <input type="text" id="codigo" name="codigo" autocomplete="one-time-code" aria-describedby="err-codigo ay-codigo" required inputmode="numeric" maxlength="6" placeholder="123456">
+          <p class="ayuda" id="ay-codigo">6 dígitos que verás en tu app.</p><p class="error-msg" id="err-codigo"></p>
+        </div>
+          </div>
+          <button type="submit" class="btn btn-oscuro" id="pago-boton">Pagar</button>
+        </form>
+        <p class="estado-form" role="status" aria-live="polite"></p>
+      </section>
+      <section id="pago-ok-vista" tabindex="-1" hidden>
+        <h2>¡Pago aprobado!</h2>
+        <p id="pago-ok-texto"></p>
+        <button type="button" class="btn btn-oscuro" data-cerrar-pago>Seguir comprando</button>
+      </section>
+    </div>
+  </dialog>
+
+  <main id="contenido" tabindex="-1">
+    <nav class="migas" aria-label="Ruta de navegación">
+      <ol><li><a href="../index.html">Inicio</a></li><li><a href="../productos.html">Productos</a></li><li><a href="../productos.html#perifericos">Periféricos</a></li><li><span aria-current="page">Teclados</span></li></ol>
+    </nav>
+    <header class="pagina-cab">
+      <p class="eyebrow">Periféricos</p>
+      <h1>Teclados</h1>
+      <p>Switches precisos y respuesta inmediata para cada pulsación.</p>
+    </header>
+    <div class="catalogo">
+      <aside class="filtros-panel" aria-label="Filtros de productos">
+        <details class="filtros-det" open>
+          <summary><span>Filtros</span><span class="filtros-activos" id="filtros-activos" hidden>0</span></summary>
+          <form id="filtros" aria-label="Filtrar Teclados">
+            <div class="grupo"><label for="buscador">Buscar</label>
+              <input type="search" id="buscador" placeholder="Ej. Teclado" autocomplete="off"></div>
+            <fieldset class="grupo" id="grupo-marcas"><legend>Marca</legend><div class="chips" id="facet-marcas"><label class="chip"><input type="checkbox" name="marca" value="Redragon"><span>Redragon</span></label><label class="chip"><input type="checkbox" name="marca" value="Logitech"><span>Logitech</span></label><label class="chip"><input type="checkbox" name="marca" value="HyperX"><span>HyperX</span></label></div></fieldset>
+            <div class="grupo"><label for="precio-max">Precio máximo <output id="precio-valor" for="precio-max">Sin límite</output></label>
+              <input type="range" id="precio-max" min="0" max="600" step="20" value="600">
+              <div class="rango-marcas" aria-hidden="true"><span>S/ 0</span><span id="precio-tope">S/ 600</span></div></div>
+            <fieldset class="grupo" id="grupo-tags"><legend>Características</legend><div class="chips" id="facet-tags"><label class="chip"><input type="checkbox" name="tag" value="Mecánico"><span>Mecánico</span></label><label class="chip"><input type="checkbox" name="tag" value="RGB"><span>RGB</span></label></div></fieldset>
+            <label class="switch"><input type="checkbox" id="solo-ofertas" role="switch"><span class="switch-pista" aria-hidden="true"></span><span>Solo ofertas</span></label>
+            <div class="grupo"><label for="orden">Ordenar por</label>
+              <select id="orden"><option value="defecto">Destacados</option><option value="menor">Precio: menor a mayor</option><option value="mayor">Precio: mayor a menor</option><option value="nombre">Nombre: A-Z</option></select></div>
+            <button type="reset" class="btn-limpiar">Limpiar filtros</button>
+          </form>
+        </details>
+      </aside>
+      <section class="catalogo-lista" aria-labelledby="t-modelos">
+        <div class="catalogo-barra"><h2 id="t-modelos">Modelos disponibles</h2><p class="resultado-info" id="resultado-info" role="status" aria-live="polite"></p></div>
+        <div class="productos" data-familia>
+        <article class="producto-card revelar" data-id="teclado-redragon" data-nombre="Teclado Mecánico Redragon" data-precio="160" data-marca="Redragon" data-tags="Mecánico|RGB" data-oferta="0">
+          <a class="producto-enlace" href="../categorias/teclados.html?p=teclado-redragon" data-ver="teclado-redragon" aria-haspopup="dialog">
+            <div class="producto-img"><img src="../imágenes/teclado.jpg" alt="Teclado mecánico Redragon con RGB" width="400" height="400" loading="lazy"></div>
+            <div class="producto-info"><p class="tipo">Redragon</p><h3>Teclado Mecánico Redragon</h3><span class="card-rating" data-id="teclado-redragon"></span></div>
+          </a>
+          <div class="producto-pie"><p class="precio">S/ 160.00</p>
+            <button type="button" class="btn-agregar" data-agregar data-id="teclado-redragon" data-nombre="Teclado Mecánico Redragon" data-precio="160" aria-label="Agregar Teclado Mecánico Redragon al carrito">Agregar</button>
+          </div>
+        </article>
+        <article class="producto-card revelar" data-id="teclado-logitech" data-nombre="Logitech G Pro X" data-precio="380" data-marca="Logitech" data-tags="Mecánico|RGB" data-oferta="0">
+          <a class="producto-enlace" href="../categorias/teclados.html?p=teclado-logitech" data-ver="teclado-logitech" aria-haspopup="dialog">
+            <div class="producto-img"><img src="../imágenes/teclado2.jpg" alt="Teclado Logitech G Pro X" width="400" height="400" loading="lazy"></div>
+            <div class="producto-info"><p class="tipo">Logitech</p><h3>Logitech G Pro X</h3><span class="card-rating" data-id="teclado-logitech"></span></div>
+          </a>
+          <div class="producto-pie"><p class="precio">S/ 380.00</p>
+            <button type="button" class="btn-agregar" data-agregar data-id="teclado-logitech" data-nombre="Logitech G Pro X" data-precio="380" aria-label="Agregar Logitech G Pro X al carrito">Agregar</button>
+          </div>
+        </article>
+        <article class="producto-card revelar oferta" data-id="teclado-hyperx" data-nombre="HyperX Alloy Origins" data-precio="420" data-marca="HyperX" data-tags="Mecánico|RGB" data-oferta="1">
+          <span class="badge-oferta">-10%</span>
+          <a class="producto-enlace" href="../categorias/teclados.html?p=teclado-hyperx" data-ver="teclado-hyperx" aria-haspopup="dialog">
+            <div class="producto-img"><img src="../imágenes/teclado3.jpg" alt="Teclado HyperX Alloy Origins" width="400" height="400" loading="lazy"></div>
+            <div class="producto-info"><p class="tipo">HyperX</p><h3>HyperX Alloy Origins</h3><span class="card-rating" data-id="teclado-hyperx"></span></div>
+          </a>
+          <div class="producto-pie"><p><span class="precio-original"><span class="solo-lector">Precio original </span>S/ 470.00</span><span class="precio-oferta"><span class="solo-lector">Precio en oferta </span>S/ 420.00</span></p>
+            <button type="button" class="btn-agregar" data-agregar data-id="teclado-hyperx" data-nombre="HyperX Alloy Origins" data-precio="420" aria-label="Agregar HyperX Alloy Origins al carrito">Agregar</button>
+          </div>
+        </article>
+        </div>
+        <p id="sin-resultados" class="sin-resultados" hidden>No hay modelos con esos filtros. Prueba ampliar el precio o pulsa «Limpiar filtros».</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="sitio-footer">
+    <div class="footer-columnas">
+      <section class="footer-col"><h2>ShopWare</h2><p>Los mejores componentes de hardware al mejor precio.</p></section>
+      <nav class="footer-col" aria-label="Enlaces del sitio"><h2>Enlaces</h2><ul>
+        <li><a href="../nosotros.html">Nosotros</a></li>
+        <li><a href="../contacto.html">Contacto</a></li>
+        <li><a href="../preguntas.html">Preguntas Frecuentes</a></li>
+        <li><a href="../ofertas.html">Ofertas</a></li>
+      </ul></nav>
+      <nav class="footer-col" aria-label="Redes sociales"><h2>Síguenos</h2><ul>
+        <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook<span class="solo-lector"> (se abre en una pestaña nueva)</span></a></li>
+        <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram<span class="solo-lector"> (se abre en una pestaña nueva)</span></a></li>
+        <li><a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">TikTok<span class="solo-lector"> (se abre en una pestaña nueva)</span></a></li>
+      </ul></nav>
+      <section class="footer-col"><h2>Métodos de pago</h2><ul class="pagos"><li>Visa</li><li>Mastercard</li><li>Yape</li><li>Plin</li></ul></section>
+    </div>
+    <p class="footer-copy">&copy; 2026 ShopWare. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
