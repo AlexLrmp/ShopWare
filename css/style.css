@@ -62,7 +62,7 @@ header :focus-visible,footer :focus-visible,.hero :focus-visible,.panel :focus-v
 .btn-sec{border-color:var(--plomo);color:var(--blanco)}
 .btn-sec:hover{background:var(--blanco);color:var(--negro);border-color:var(--blanco)}
 .btn-oscuro{background:var(--negro);color:var(--blanco)}
-.btn-oscuro:hover{background:var(--plomo-oscuro)}
+.btn-oscuro:hover{background:var(--negro)}
 .btn[disabled]{opacity:.6;cursor:progress;transform:none}
 
 /* ---------- Hero ---------- */
@@ -550,69 +550,3 @@ body{background:radial-gradient(ellipse 80% 40% at 50% -10%,rgba(31,200,242,.14)
   .resenas{grid-template-columns:1fr}
   .confianza{margin-top:-2rem}
 }
-
-/* =====================================================================
-   v5 · Guía de compra, preguntas por familia, comparador y enlaces entre familias
-   ===================================================================== */
-.guia{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;counter-reset:guia}
-.guia-item{position:relative;background:var(--blanco);border-radius:calc(var(--radio)*1.2);padding:1.5rem 1.4rem 1.3rem;box-shadow:var(--sombra-1);border:1px solid transparent;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
-.guia-item:hover{transform:translateY(-4px);box-shadow:var(--sombra-2);border-color:var(--acento)}
-.guia-num{display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:10px;background:var(--negro);color:var(--acento);font-family:var(--f-titulo);font-weight:700;margin-bottom:.8rem}
-.guia-item h3{font-size:1.05rem;margin-bottom:.35rem}
-.guia-item p{color:var(--plomo-oscuro);font-size:.93rem}
-.faq-fam{margin:0;max-width:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:.9rem;align-items:start}
-.faq-fam .faq-item{margin-bottom:0}
-.chips-links{list-style:none;display:flex;flex-wrap:wrap;gap:.6rem}
-.chip-link{display:inline-block;text-decoration:none;color:var(--negro);font-weight:600;font-size:.9rem;background:var(--blanco);border:2px solid var(--plomo-claro);border-radius:999px;padding:.5rem 1.1rem;transition:background .25s,color .25s,border-color .25s,transform .2s var(--ease)}
-.chip-link:hover{background:var(--negro);color:var(--blanco);border-color:var(--negro);transform:translateY(-2px)}
-
-/* Casilla "Comparar" en las tarjetas */
-.comparar{display:flex;align-items:center;gap:.5rem;margin:.1rem 1.15rem .2rem;font-size:.82rem;font-weight:600;color:var(--plomo-oscuro);cursor:pointer;width:max-content}
-.comparar input{width:1.05rem;height:1.05rem;accent-color:var(--acento-fuerte);cursor:pointer}
-.comparar:hover{color:var(--negro)}
-
-/* Barra flotante del comparador */
-.comp-barra{position:fixed;left:50%;bottom:1rem;transform:translateX(-50%);z-index:85;display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;width:min(760px,calc(100vw - 9rem));background:rgba(16,18,21,.95);backdrop-filter:blur(8px);color:var(--blanco);border:1px solid var(--plomo-oscuro);border-radius:calc(var(--radio)*1.2);padding:.7rem 1rem;box-shadow:var(--sombra-2);animation:entrada .35s var(--ease)}
-.comp-barra[hidden]{display:none}
-.comp-texto{font-size:.88rem;color:var(--plomo-claro);flex:1 1 180px}
-.comp-lista{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;flex:2 1 240px}
-.comp-lista li{display:inline-flex;align-items:center;gap:.4rem;background:var(--grafito);border:1px solid var(--plomo-oscuro);border-radius:999px;padding:.2rem .3rem .2rem .8rem;font-size:.8rem}
-.comp-lista button{width:1.5rem;height:1.5rem;border:0;border-radius:50%;background:var(--plomo-oscuro);color:var(--blanco);cursor:pointer;line-height:1;transition:background .2s}
-.comp-lista button:hover{background:var(--error)}
-.comp-barra .btn{padding:.55rem 1.2rem}
-.comp-barra .btn-limpiar{color:var(--blanco);border-color:var(--plomo)}
-.comp-barra .btn-limpiar:hover{background:var(--blanco);color:var(--negro)}
-body.con-comparador{padding-bottom:5.5rem}
-
-/* Diálogo de comparación */
-.modal-comp{max-width:min(1000px,94vw)}
-.comp-caja{grid-template-columns:1fr;gap:1rem}
-.comp-caja h2{padding-right:2.5rem}
-.comp-scroll{overflow-x:auto;border:1px solid var(--plomo-claro);border-radius:var(--radio)}
-.tabla-comp{width:100%;border-collapse:collapse;min-width:520px;font-size:.93rem}
-.tabla-comp th,.tabla-comp td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--plomo-claro);vertical-align:top}
-.tabla-comp thead th{background:var(--negro);color:var(--blanco);font-family:var(--f-titulo);font-size:.98rem}
-.tabla-comp .comp-vacio{background:var(--negro)}
-.tabla-comp tbody th{width:22%;color:var(--plomo-oscuro);font-weight:600;background:var(--fondo)}
-.tabla-comp tbody tr:nth-child(even) td{background:var(--fondo)}
-.tabla-comp td.mejor{font-weight:700;color:var(--exito)}
-.tabla-comp td.mejor::after{content:" ✓ menor precio";font-size:.75rem;font-weight:600}
-
-@media (max-width:900px){
-  .comp-barra{width:calc(100vw - 1.5rem);bottom:5rem}
-  body.con-comparador{padding-bottom:9rem}
-}
-@media (max-width:760px){
-  .faq-fam{grid-template-columns:1fr}
-}
-
-/* ---------- Portada del video de YouTube ---------- */
-.video-facade{position:relative;background:var(--negro)}
-.video-play{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;background:none;display:block;overflow:hidden}
-.video-play img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease),filter .3s}
-.video-play:hover img{transform:scale(1.04);filter:brightness(.8)}
-.video-play-icono{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:var(--acento);box-shadow:0 10px 30px rgba(31,200,242,.5);transition:transform .3s var(--ease)}
-.video-play-icono::before{content:"";position:absolute;left:30px;top:24px;border-style:solid;border-width:14px 0 14px 24px;border-color:transparent transparent transparent var(--negro)}
-.video-play:hover .video-play-icono{transform:scale(1.12)}
-.video-nota{margin-top:.9rem;font-size:.88rem;color:var(--plomo-oscuro);background:var(--fondo);border-left:4px solid var(--acento);padding:.7rem 1rem;border-radius:var(--radio-sm)}
-.video-nota[hidden]{display:none}

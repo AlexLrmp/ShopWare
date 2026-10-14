@@ -67,7 +67,7 @@
   function initImagenes() {
     const reparar = im => {
       const src = im.getAttribute('src');
-      if (!src || /^(data:|https?:)/.test(src) || im.dataset.reparada === src) return;
+      if (!src || src.startsWith('data:') || im.dataset.reparada === src) return;
       im.dataset.reparada = src;
       SW.u.resolverImagen(src).then(real => { if (real !== src) im.src = real; });
     };
@@ -164,29 +164,6 @@
     rot.reiniciar();
   }
 
-  /* ---------- Video de YouTube con portada (se carga al hacer clic) ---------- */
-  function initVideo() {
-    const box = $('[data-video]');
-    if (!box) return;
-    const id = box.dataset.video, btn = $('.video-play', box), img = $('img', btn), nota = $('#video-nota');
-    img.addEventListener('error', () => { img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; }, { once: true });
-    btn.addEventListener('click', () => {
-      if (location.protocol === 'file:') { // YouTube exige un origen http(s) para incrustar (si no, error 153)
-        window.open('https://www.youtube.com/watch?v=' + id, '_blank', 'noopener');
-        nota.hidden = false;
-        return;
-      }
-      const f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-      f.title = 'Video promocional de ShopWare';
-      f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
-      f.referrerPolicy = 'strict-origin-when-cross-origin';
-      f.allowFullscreen = true;
-      box.replaceChildren(f);
-      f.focus();
-    });
-  }
-
   /* ---------- Contacto ---------- */
   function initContacto() {
     const form = $('#form-contacto');
@@ -232,13 +209,12 @@
   /* ---------- Arranque ---------- */
   document.addEventListener('DOMContentLoaded', () => {
     SW.panels.init();
-    ['auth', 'cart', 'payment', 'catalog', 'reviews', 'modal', 'filters', 'compare'].forEach(m => SW[m]?.init());
+    ['auth', 'cart', 'payment', 'catalog', 'reviews', 'modal', 'filters'].forEach(m => SW[m]?.init());
     initImagenes();
     initHeader();
     initBusquedaRapida();
     initAudio();
     initReveal();
-    initVideo();
-    ({ inicio: initCarrusel, contacto: initContacto, preguntas: initFaq, familia: initFaq })[document.body.dataset.page]?.();
+    ({ inicio: initCarrusel, contacto: initContacto, preguntas: initFaq })[document.body.dataset.page]?.();
   });
 })();
